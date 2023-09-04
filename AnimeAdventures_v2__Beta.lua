@@ -4738,10 +4738,10 @@ function autoabilityerwin()
         local LPlayer = game.Players.LocalPlayer.Name
         local UnitsE = {'erwin','erwin:shiny','erwin_school','erwin_halloween'}
         local Delay = {
-            ['erwin'] = 16.4,
-            ['erwin:shiny'] = 16.4,
-            ['erwin_school'] = 16.4,
-            ['erwin_halloween'] = 16.4,
+            ['erwin'] = 15.5,
+            ['erwin:shiny'] = 15.5,
+            ['erwin_school'] = 15.5,
+            ['erwin_halloween'] = 15.5,
         }
         _G.Stop = false
         while wait() do
@@ -5763,7 +5763,7 @@ function PlaceUnitsTEST(map,name,_uuid,unit)
     --//Unit 4
     local U4_amm, U4_name, U4_uuid, U4_u = GetUnitInfo("U4")
     if U4_wv <= current_wave and U4_amm <= U4_TAmm then
-	    if U4_sellW >= current_wave and U4_amm < U4_TAmm then
+	if U4_sellW >= current_wave and U4_amm < U4_TAmm then
 		    print("placing u4.."..U4_name)
 		    PlacePos(map, U4_name, U4_uuid,"UP4")
         end
@@ -5782,6 +5782,7 @@ function PlaceUnitsTEST(map,name,_uuid,unit)
             upgradeunit4(U4_name)
             print("upgrading check u4.."..U4_name)
         end
+	print("THE AMOUNT OF UNIT 4 IS "..U4_amm)
     end
 --end
     --//Unit 5
