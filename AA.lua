@@ -69,7 +69,9 @@ end
 local Y = X.New({
     Title = "Main Menu"
 })
-
+local Z = X.New({
+    Title = "Misc"
+})
 
 ----------AUTO ABILITIES----------
 Y.Toggle({
@@ -96,7 +98,7 @@ Y.Toggle({
     Enabled = Settings.EnableBuffwendyLoop
 })
 ----------REFRESH SCRIPT----------
-Y.Button(
+Z.Button(
     {
         Text = "Refresh Script",
         Callback = function()
@@ -104,7 +106,7 @@ Y.Button(
         end
     }
 )
-Y.Button(
+Z.Button(
     {
         Text = "EnableBufferwinLoop" ,
         Callback = function()
@@ -112,7 +114,7 @@ Y.Button(
         end
     }
 )
-Y.Button(
+Z.Button(
     {
         Text = "EnableBuffwendyLoop",
         Callback = function()
