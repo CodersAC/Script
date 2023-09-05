@@ -1,5 +1,6 @@
 local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
 
+----------WAIT FOR THE GAME TO LOAD----------
 repeat  task.wait() until game:IsLoaded()
 if game.PlaceId == 8304191830 then
     repeat task.wait() until game.Workspace:FindFirstChild(game.Players.LocalPlayer.Name)
@@ -11,7 +12,7 @@ else
     game:GetService("ReplicatedStorage").endpoints.client_to_server.vote_start:InvokeServer()
     repeat task.wait() until game:GetService("Workspace")["_waves_started"].Value == true
 end
-
+----------GUI SETTINGS AND COLLORS----------
 local X = Material.Load({
     Title = "CodeAC Hub | Anime Adventures",
     Style = 3,
@@ -25,16 +26,53 @@ local X = Material.Load({
     }
 })
 
+----------Save Work on Folder----------
+local a = 'V2_Anime_Adventures_AutoAbility' -- 
+local b = game:GetService('Players').LocalPlayer.Name .. '_AnimeAdventures2.json' 
+Settings = {}
+function saveSettings()
+    local HttpService = game:GetService('HttpService')
+    if not isfolder(a) then
+        makefolder(a)
+    end
+    writefile(a .. '/' .. b, HttpService:JSONEncode(Settings))
+    Settings = ReadSetting()
+    warn("Settings Saved!")
+end
+function ReadSetting()
+    local s, e = pcall(function()
+        local HttpService = game:GetService('HttpService')
+        if not isfolder(a) then
+            makefolder(a)
+        end
+        return HttpService:JSONDecode(readfile(a .. '/' .. b))
+    end)
+    if s then
+        return e
+    else
+        saveSettings()
+        return ReadSetting()
+    end
+end
+Settings = ReadSetting()
+
+----------AUTO LOAD FUNCTION----------
+function autoload2()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/CodersAC/Script/main/AA.lua'))()
+end
+
+----------MAIN FRAME----------
 local Y = X.New({
     Title = "Main"
 })
 
 
-
+----------AUTO ABILITIES----------
 Y.Toggle({
     Text = "Auto Abilities Erwin",
     Callback = function(Value)
-        a = Value
+        Settings.EnableBufferwinLoop = Value
+        saveSettings()
         local LocalPlayer = game.Players.LocalPlayer
         local LPlayer = game.Players.LocalPlayer.Name
         local UnitsE = {'erwin','erwin:shiny','erwin_school','erwin_halloween'}
@@ -73,12 +111,13 @@ Y.Toggle({
     end)
         end
     end,
-    Enabled = false
+    Enabled = Settings.EnableBufferwinLoop
 })
 Y.Toggle({
     Text = "Auto Abilities Wendy",
     Callback = function(Value)
-        a = Value
+        Settings.EnableBuffwendyLoop = Value
+        saveSettings()
         local LocalPlayer = game.Players.LocalPlayer
         local LPlayer = game.Players.LocalPlayer.Name
         local UnitsW = {'wendy','wendy:shiny'}
@@ -86,7 +125,7 @@ Y.Toggle({
             ['wendy'] = 15.5,
             ['wendy:shiny'] = 15.5,
         }
-        while a do task.wait()
+        while Settings.EnableBuffwendyLoop do task.wait()
         pcall(function()
           local wendy1 = {}
           for _,v in pairs(game:GetService("Workspace")._UNITS:GetChildren()) do
@@ -115,6 +154,15 @@ Y.Toggle({
     end)
         end
     end,
-    Enabled = false
+    Enabled = Settings.EnableBuffwendyLoop
 })
+----------REFRESH SCRIPT----------
+Y.Button(
+    {
+        Text = "Refresh Script",
+        Callback = function()
+            autoload2()
+        end
+    }
+)
 game.Players.LocalPlayer.PlayerGui.MessageGui:Destroy()
