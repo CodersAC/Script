@@ -122,7 +122,7 @@ Y.Toggle({
 Y.Toggle({
     Text = "Auto Abilities Wendy",
     Callback = function(Value)
-	warn(Value .. "Wendy Auto Buff!")
+	print(Value)
         Settings.EnableBuffwendyLoop = Value
         saveSettings()
         local LocalPlayer = game.Players.LocalPlayer
