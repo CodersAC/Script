@@ -75,7 +75,7 @@ local Y = X.New({
 Y.Toggle({
     Text = "Auto Abilities Erwin",
     Callback = function(Value)
-	print(Value .. "Erwin Auto Buff!")
+	warn(Value .. "Erwin Auto Buff!")
         Settings.EnableBufferwinLoop = Value
         saveSettings()
         local LocalPlayer = game.Players.LocalPlayer
@@ -122,7 +122,7 @@ Y.Toggle({
 Y.Toggle({
     Text = "Auto Abilities Wendy",
     Callback = function(Value)
-	print(Value .. "Wendy Auto Buff!")
+	warn(Value .. "Wendy Auto Buff!")
         Settings.EnableBuffwendyLoop = Value
         saveSettings()
         local LocalPlayer = game.Players.LocalPlayer
