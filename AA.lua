@@ -175,8 +175,8 @@ function autoabilitywendy()
         local LPlayer = game.Players.LocalPlayer.Name
         local UnitsW = {'wendy','wendy:shiny'}
         local Delay = {
-            ['wendy'] = 16.4,
-            ['wendy:shiny'] = 16.4,
+            ['wendy'] = 15.5,
+            ['wendy:shiny'] = 15.5,
         }
         while wait() do
             local wendy1 = {}
