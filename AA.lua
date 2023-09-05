@@ -76,6 +76,7 @@ Y.Toggle({
     Text = "Auto Abilities Erwin",
     Callback = function(Value)
         Settings.EnableBufferwinLoop = Value
+	print(Value .. "Erwin Auto Buff!")
         saveSettings()
         local LocalPlayer = game.Players.LocalPlayer
         local LPlayer = game.Players.LocalPlayer.Name
@@ -122,6 +123,7 @@ Y.Toggle({
     Text = "Auto Abilities Wendy",
     Callback = function(Value)
         Settings.EnableBuffwendyLoop = Value
+	print(Value .. "Wendy Auto Buff!")
         saveSettings()
         local LocalPlayer = game.Players.LocalPlayer
         local LPlayer = game.Players.LocalPlayer.Name
