@@ -128,10 +128,10 @@ function autoabilityerwin()
         local LPlayer = game.Players.LocalPlayer.Name
         local UnitsE = {'erwin','erwin:shiny','erwin_school','erwin_halloween'}
         local Delay = {
-            ['erwin'] = 15.5,
-            ['erwin:shiny'] = 15.5,
-            ['erwin_school'] = 15.5,
-            ['erwin_halloween'] = 15.5,
+            ['erwin'] = 15.6,
+            ['erwin:shiny'] = 15.6,
+            ['erwin_school'] = 15.6,
+            ['erwin_halloween'] = 15.6,
         }
         while wait() do
           local erwin1 = {}
@@ -175,8 +175,8 @@ function autoabilitywendy()
         local LPlayer = game.Players.LocalPlayer.Name
         local UnitsW = {'wendy','wendy:shiny'}
         local Delay = {
-            ['wendy'] = 15.5,
-            ['wendy:shiny'] = 15.5,
+            ['wendy'] = 15.6,
+            ['wendy:shiny'] = 15.6,
         }
         while wait() do
             local wendy1 = {}
