@@ -210,14 +210,14 @@ Y.Button(
 )
 Y.Button(
     {
-        Text = "Settings.EnableBufferwinLoop" ,
+        Text = Settings.EnableBufferwinLoop ,
         Callback = function()
         end
     }
 )
 Y.Button(
     {
-        Text = "Settings.EnableBuffwendyLoop",
+        Text = Settings.EnableBuffwendyLoop,
         Callback = function()
         end
     }
