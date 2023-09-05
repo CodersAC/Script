@@ -108,6 +108,7 @@ Y.Button(
     {
         Text = "EnableBufferwinLoop" ,
         Callback = function()
+	print(Settings.EnableBufferwinLoop)
         end
     }
 )
@@ -115,6 +116,7 @@ Y.Button(
     {
         Text = "EnableBuffwendyLoop",
         Callback = function()
+	print(Settings.EnableBuffwendyLoop)
         end
     }
 )
@@ -199,27 +201,5 @@ end
 if Settings.EnableBuffwendyLoop then
     autoabilitywendy()
 end
-----------REFRESH SCRIPT----------
-Y.Button(
-    {
-        Text = "Refresh Script",
-        Callback = function()
-            autoload2()
-        end
-    }
-)
-Y.Button(
-    {
-        Text = Settings.EnableBufferwinLoop ,
-        Callback = function()
-        end
-    }
-)
-Y.Button(
-    {
-        Text = Settings.EnableBuffwendyLoop,
-        Callback = function()
-        end
-    }
-)
+
 game.Players.LocalPlayer.PlayerGui.MessageGui:Destroy()
