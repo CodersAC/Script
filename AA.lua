@@ -10,6 +10,12 @@ local X = Material.Load({
         MainFrame = Color3.fromRGB(0,0,0),
         Toggle = Color3.fromRGB(124,37,255),
         ToggleAccent = Color3.fromRGB(255,255,255), 
+        Dropdown = Color3.fromRGB(124,37,255),
+		DropdownAccent = Color3.fromRGB(255,255,255),
+        Slider = Color3.fromRGB(124,37,255),
+		SliderAccent = Color3.fromRGB(255,255,255),
+        NavBarAccent = Color3.fromRGB(0,0,0),
+        Content = Color3.fromRGB(0,0,0),
     }
 })
 
@@ -33,14 +39,13 @@ Y.Toggle({
             ['erwin_halloween'] = 15.5,
         }
         while a do task.wait()
+            pcall(function()
             local erwin1 = {}
           for _,v in pairs(game:GetService("Workspace")._UNITS:GetChildren()) do
               if table.find(UnitsE,v.Name) and v:FindFirstChild("_stats"):FindFirstChild("player").Value == LocalPlayer then
                   table.insert(erwin1, v)
               end
           end
-
-        
           if #erwin1 == 4 then
             game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("use_active_attack"):InvokeServer(erwin1[1])
             warn("Use Skill " ..erwin1[1].Name .." 1 " )
@@ -59,6 +64,7 @@ Y.Toggle({
             print("Waiting")
             wait(20)
         end
+    end)
         end
     end,
     Enabled = false
@@ -75,6 +81,7 @@ Y.Toggle({
             ['wendy:shiny'] = 15.5,
         }
         while a do task.wait()
+        pcall(function()
           local wendy1 = {}
           for _,v in pairs(game:GetService("Workspace")._UNITS:GetChildren()) do
                 if table.find(UnitsW,v.Name) and v:FindFirstChild("_stats"):FindFirstChild("player").Value == LocalPlayer then
@@ -99,6 +106,7 @@ Y.Toggle({
             print("Waiting")
             wait(20)
         end
+    end)
         end
     end,
     Enabled = false
