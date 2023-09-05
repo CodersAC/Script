@@ -84,7 +84,7 @@ Y.Toggle({
             warn("Use Skill " ..wendy1[1].Name .." 4 " )
             wait(Delay[wendy1[1].Name])
         end
-        if #erwin1 ~=4 or #wendy1 ~=4 then
+        if #erwin1 < 4 or #wendy1 < 4  then
             wait(20)
         end
         end
