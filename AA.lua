@@ -95,7 +95,29 @@ Y.Toggle({
     end,
     Enabled = Settings.EnableBuffwendyLoop
 })
-
+----------REFRESH SCRIPT----------
+Y.Button(
+    {
+        Text = "Refresh Script",
+        Callback = function()
+            autoload2()
+        end
+    }
+)
+Y.Button(
+    {
+        Text = "EnableBufferwinLoop" ,
+        Callback = function()
+        end
+    }
+)
+Y.Button(
+    {
+        Text = "EnableBuffwendyLoop",
+        Callback = function()
+        end
+    }
+)
 function autoabilityerwin()
         local LocalPlayer = game.Players.LocalPlayer
         local LPlayer = game.Players.LocalPlayer.Name
