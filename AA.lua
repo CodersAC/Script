@@ -75,9 +75,28 @@ local Y = X.New({
 Y.Toggle({
     Text = "Auto Abilities Erwin",
     Callback = function(Value)
-	print(Settings.EnableBufferwinLoop)
+	    print(Settings.EnableBufferwinLoop)
         Settings.EnableBufferwinLoop = Value
         saveSettings()
+        autoabilityerwin()
+        end
+    end,
+    Enabled = Settings.EnableBufferwinLoop
+})
+
+Y.Toggle({
+    Text = "Auto Abilities Wendy",
+    Callback = function(Value)
+	    print(Settings.EnableBuffwendyLoop)
+        Settings.EnableBuffwendyLoop = Value
+        saveSettings()
+        autoabilityerwin()
+        end
+    end,
+    Enabled = Settings.EnableBuffwendyLoop
+})
+
+function autoabilityerwin()
         local LocalPlayer = game.Players.LocalPlayer
         local LPlayer = game.Players.LocalPlayer.Name
         local UnitsE = {'erwin','erwin:shiny','erwin_school','erwin_halloween'}
@@ -87,13 +106,16 @@ Y.Toggle({
             ['erwin_school'] = 15.5,
             ['erwin_halloween'] = 15.5,
         }
-        while Settings.EnableBufferwinLoop do task.wait()
-            pcall(function()
-            local erwin1 = {}
+        while Settings.EnableBufferwinLoop do
+          local erwin1 = {}
           for _,v in pairs(game:GetService("Workspace")._UNITS:GetChildren()) do
               if table.find(UnitsE,v.Name) and v:FindFirstChild("_stats"):FindFirstChild("player").Value == LocalPlayer then
                   table.insert(erwin1, v)
               end
+          end
+          if #erwin1 < 4 then
+            print("Waiting")
+            wait(20)
           end
           if #erwin1 == 4 then
             game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("use_active_attack"):InvokeServer(erwin1[1])
@@ -109,60 +131,52 @@ Y.Toggle({
             warn("Use Skill " ..erwin1[1].Name .." 4 " )
             wait(Delay[erwin1[1].Name])
           end
-        if #erwin1 < 4 then
-            print("Waiting")
-            wait(20)
         end
-    end)
-        end
-    end,
-    Enabled = false
-})
+end
 
-Y.Toggle({
-    Text = "Auto Abilities Wendy",
-    Callback = function(Value)
-	print(Settings.EnableBuffwendyLoop)
-        Settings.EnableBuffwendyLoop = Value
-        saveSettings()
+if Settings.EnableBufferwinLoop then
+    autoabilityerwin()
+end
+
+function autoabilitywendy()
         local LocalPlayer = game.Players.LocalPlayer
         local LPlayer = game.Players.LocalPlayer.Name
         local UnitsW = {'wendy','wendy:shiny'}
         local Delay = {
-            ['wendy'] = 15.5,
-            ['wendy:shiny'] = 15.5,
+            ['wendy'] = 16.4,
+            ['wendy:shiny'] = 16.4,
         }
-        while Settings.EnableBuffwendyLoop do task.wait()
-        pcall(function()
-          local wendy1 = {}
-          for _,v in pairs(game:GetService("Workspace")._UNITS:GetChildren()) do
+        while Settings.EnableBuffwendyLoop do
+            local wendy1 = {}
+            for _,v in pairs(game:GetService("Workspace")._UNITS:GetChildren()) do
                 if table.find(UnitsW,v.Name) and v:FindFirstChild("_stats"):FindFirstChild("player").Value == LocalPlayer then
                     table.insert(wendy1, v)
                 end
             end
-          if #wendy1 == 4 then
-            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("use_active_attack"):InvokeServer(wendy1[1])
-            warn("Use Skill " ..wendy1[1].Name .." 1 " )
-            wait(Delay[wendy1[1].Name])
-            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("use_active_attack"):InvokeServer(wendy1[3])
-            warn("Use Skill " ..wendy1[1].Name .." 2 " )
-            wait(Delay[wendy1[1].Name])
-            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("use_active_attack"):InvokeServer(wendy1[2])
-            warn("Use Skill " ..wendy1[1].Name .." 3 " )
-            wait(Delay[wendy1[1].Name])
-            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("use_active_attack"):InvokeServer(wendy1[4])
-            warn("Use Skill " ..wendy1[1].Name .." 4 " )
-            wait(Delay[wendy1[1].Name])
+            if #wendy1 < 4 then
+                print("Waiting")
+                wait(20)
+              end
+            if #wendy1 == 4 then
+                game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("use_active_attack"):InvokeServer(wendy1[1])
+                warn("Use Skill " ..wendy1[1].Name .." 1 " )
+                wait(Delay[wendy1[1].Name])
+                game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("use_active_attack"):InvokeServer(wendy1[3])
+                warn("Use Skill " ..wendy1[1].Name .." 2 " )
+                wait(Delay[wendy1[1].Name])
+                game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("use_active_attack"):InvokeServer(wendy1[2])
+                warn("Use Skill " ..wendy1[1].Name .." 3 " )
+                wait(Delay[wendy1[1].Name])
+                game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("use_active_attack"):InvokeServer(wendy1[4])
+                warn("Use Skill " ..wendy1[1].Name .." 4 " )
+                wait(Delay[wendy1[1].Name])
+            end
         end
-        if #wendy1 < 4 then
-            print("Waiting")
-            wait(20)
-        end
-    end)
-        end
-    end,
-    Enabled = false
-})
+end
+
+if Settings.EnableBuffwendyLoop then
+    autoabilitywendy()
+end
 ----------REFRESH SCRIPT----------
 Y.Button(
     {
@@ -174,14 +188,14 @@ Y.Button(
 )
 Y.Button(
     {
-        Text = "EnableBufferwinLoop" .. Settings.EnableBufferwinLoop,
+        Text = "EnableBufferwinLoop" ,
         Callback = function()
         end
     }
 )
 Y.Button(
     {
-        Text = "EnableBuffwendyLoop" .. Settings.EnableBuffwendyLoop,
+        Text = "EnableBuffwendyLoop",
         Callback = function()
         end
     }
