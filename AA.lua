@@ -86,7 +86,7 @@ Y.Toggle({
             ['erwin_school'] = 15.5,
             ['erwin_halloween'] = 15.5,
         }
-        while a do task.wait()
+        while Settings.EnableBufferwinLoop do task.wait()
             pcall(function()
             local erwin1 = {}
           for _,v in pairs(game:GetService("Workspace")._UNITS:GetChildren()) do
@@ -115,8 +115,9 @@ Y.Toggle({
     end)
         end
     end,
-    Enabled = false
+    Enabled = Settings.EnableBuffwendyLoop
 })
+
 Y.Toggle({
     Text = "Auto Abilities Wendy",
     Callback = function(Value)
@@ -158,7 +159,7 @@ Y.Toggle({
     end)
         end
     end,
-    Enabled = false
+    Enabled = Settings.EnableBuffwendyLoop
 })
 ----------REFRESH SCRIPT----------
 Y.Button(
