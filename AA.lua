@@ -90,7 +90,7 @@ Y.Toggle({
 	    print(Settings.EnableBuffwendyLoop)
         Settings.EnableBuffwendyLoop = Value
         saveSettings()
-        autoabilityerwin()
+        autoabilitywendy()
         end
     end,
     Enabled = Settings.EnableBuffwendyLoop
