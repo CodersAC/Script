@@ -83,7 +83,7 @@ Y.Toggle({
         saveSettings()
         autoabilityerwin()end)
     end,
-    Enabled = false
+    Enabled = Settings.EnableBufferwinLoop
 })
 
 Y.Toggle({
@@ -95,7 +95,7 @@ Y.Toggle({
         saveSettings()
         autoabilitywendy()end)
     end,
-    Enabled = false
+    Enabled = Settings.EnableBuffwendyLoop
 })
 ----------REFRESH SCRIPT----------
 Z.Button(
