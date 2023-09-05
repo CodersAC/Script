@@ -170,4 +170,6 @@ Y.Button(
         end
     }
 )
+Y.Label = {Text = "EnableBufferwinLoop" .. Settings.nableBufferwinLoop}
+Y.Label = {Text = "Settings.EnableBuffwendyLoop" .. Settings.EnableBuffwendyLoop}
 game.Players.LocalPlayer.PlayerGui.MessageGui:Destroy()
