@@ -23,197 +23,73 @@ local Y = X.New({
     Title = "Main"
 })
 
-local P = X.New({
-    Title = "Place Anywhere"
-})
 
-local Z = X.New({
-    Title = "Misc"
-})
-
-local Cred = X.New({
-    Title = "Credits"
-})
-    Cred.Button({
-    Text = "Copy Discord UyuSF4fPC9",
-    Callback = function()
-        setclipboard("https://discord.gg/UyuSF4fPC9")
-        toclipboard("https://discord.gg/UyuSF4fPC9")
-    end,
-})
 
 Y.Toggle({
     Text = "Auto Abilities",
     Callback = function(Value)
         a = Value
-        while a do task.wait()
-            pcall(function()
-                    for i, v in next, game:GetService("Workspace")["_UNITS"]:GetChildren() do
-                        if v:IsA("Model") and v._stats.player.Value == game.Players.LocalPlayer then
-                        local args = {
-                            [1] = v
-                        }
-
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.use_active_attack:InvokeServer(unpack(args))
-                    end
-                end
-            end)
-        end
-    end,
-    Enabled = false
-})
-
-
-
-local Unit = {}
-
-for i, v in next, game:GetService("Workspace")["_UNITS"]:GetChildren() do
-    if v:IsA("Model") and v._stats.player.Value == game.Players.LocalPlayer then
-        if not table.find(Unit, tostring(v)) then
-            table.insert(Unit, tostring(v))
-        end
-    end
-end
-
-
-local drop = Y.Dropdown({
-    Text = "Select Unit",
-    Callback = function(Value)
-        getgenv().unit = Value
-    end,
-    Options = Unit
-})
-
-local function getClosest()
-    local dist, thing = math.huge
-    for i, v in next, game:GetService("Workspace")["_UNITS"]:GetChildren() do
-        if v:IsA("Model") and v.Name == unit then
-            local mag =
-                (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).magnitude
-            if mag < dist then
-                dist = mag
-                thing = v
-            end
-        end
-    end
-    return thing
-end
-
-local function getClosest1()
-    local dist, thing = math.huge
-    for i, v in next, game:GetService("Workspace")["_UNITS"]:GetChildren() do
-        if v:IsA("Model") then
-            local mag =
-                (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).magnitude
-            if mag < dist then
-                dist = mag
-                thing = v
-            end
-        end
-    end
-    return thing
-end
-
-Y.Toggle({
-    Text = "Auto Upgrade Nearest",
-    Callback = function(Value)
-        bb = Value
-        while bb do task.wait()
-            local args = {
-                [1] = getClosest()
-            }
-            
-            game:GetService("ReplicatedStorage").endpoints.client_to_server.upgrade_unit_ingame:InvokeServer(unpack(args))
-        end
-    end,
-    Enabled = false
-})
-
-Y.Button(
-    {
-        Text = "Refresh Units",
-        Callback = function()
-            table.clear(Unit)
-            for i, v in next, game:GetService("Workspace")["_UNITS"]:GetChildren() do
-                if v:IsA("Model") and v._stats.player.Value == game.Players.LocalPlayer then
-                    if not table.find(Unit, tostring(v)) then
-                        table.insert(Unit, tostring(v))
-                        drop:SetOptions(Unit)
-                    end
-                end
-            end
-        end
-    }
-)
-
-Y.Toggle({
-    Text = "Auto Sell Nearest",
-    Callback = function(Value)
-        bbbb = Value
-        while bbbb do task.wait()
-            pcall(function()
-                local args = {
-                [1] = getClosest1()
-            }
-            
-            game:GetService("ReplicatedStorage").endpoints.client_to_server.sell_unit_ingame:InvokeServer(unpack(args))
-        end)
-        end
-    end,
-    Enabled = false
-})
-
-local u = P.Dropdown({
-    Text = "Select Unit",
-    Callback = function(Value)
-        getgenv().id = Value
-    end,
-    Options = Unit,
-    Menu = {
-        Information = function(self)
-            X.Banner({
-                Text = "Place a unit then press Refresh Unit"
-            })
-        end
-    }
-})
-
-
-P.Button({
-    Text = "Place Unit",
-    Callback = function()
-        local function RoundNumber(Number, Divider)
-            Divider = Divider or 1
-            return (math.floor((Number/Divider)+0.5)*Divider)
-            end
-        for i, v in next, game:GetService("Workspace")["_UNITS"]:GetChildren() do
-            if v.Name == id then
-        local args = {
-            [1] = v._stats.uuid.Value,
-            [2] = CFrame.new(Vector3.new(RoundNumber(game.Players.LocalPlayer.Character.Torso.Position.X,1),RoundNumber(game.Players.LocalPlayer.Character.Torso.Position.Y-1.5,1),RoundNumber(game.Players.LocalPlayer.Character.Torso.Position.Z,1)))
+        local LocalPlayer = game.Players.LocalPlayer
+        local LPlayer = game.Players.LocalPlayer.Name
+        local UnitsE = {'erwin','erwin:shiny','erwin_school','erwin_halloween'}
+        local Delay = {
+            ['erwin'] = 15.5,
+            ['erwin:shiny'] = 15.5,
+            ['erwin_school'] = 15.5,
+            ['erwin_halloween'] = 15.5,
         }
-        
-        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
-            end
-        end
-    end,
-})
-P.Button(
-    {
-        Text = "Refresh Units",
-        Callback = function()
-            table.clear(Unit)
-            for i, v in next, game:GetService("Workspace")["_UNITS"]:GetChildren() do
-                if v:IsA("Model") and v._stats.player.Value == game.Players.LocalPlayer then
-                    if not table.find(Unit, tostring(v)) then
-                        table.insert(Unit, tostring(v))
-                        u:SetOptions(Unit)
-                    end
+        local UnitsW = {'wendy','wendy:shiny'}
+        local Delay = {
+            ['wendy'] = 15.5,
+            ['wendy:shiny'] = 15.5,
+        }
+        while a do task.wait()
+            local erwin1 = {}
+          for _,v in pairs(game:GetService("Workspace")._UNITS:GetChildren()) do
+              if table.find(UnitsE,v.Name) and v:FindFirstChild("_stats"):FindFirstChild("player").Value == LocalPlayer then
+                  table.insert(erwin1, v)
+              end
+          end
+          local wendy1 = {}
+          for _,v in pairs(game:GetService("Workspace")._UNITS:GetChildren()) do
+                if table.find(UnitsW,v.Name) and v:FindFirstChild("_stats"):FindFirstChild("player").Value == LocalPlayer then
+                    table.insert(wendy1, v)
                 end
             end
+          if #erwin1 == 4 then
+            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("use_active_attack"):InvokeServer(erwin1[1])
+            warn("Use Skill " ..erwin1[1].Name .." 1 " )
+            wait(Delay[erwin1[1].Name])
+            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("use_active_attack"):InvokeServer(erwin1[3])
+            warn("Use Skill " ..erwin1[1].Name .." 2 " )
+            wait(Delay[erwin1[1].Name])
+            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("use_active_attack"):InvokeServer(erwin1[2])
+            warn("Use Skill " ..erwin1[1].Name .." 3 " )
+            wait(Delay[erwin1[1].Name])
+            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("use_active_attack"):InvokeServer(erwin1[4])
+            warn("Use Skill " ..erwin1[1].Name .." 4 " )
+            wait(Delay[erwin1[1].Name])
+          end
+          if #wendy1 == 4 then
+            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("use_active_attack"):InvokeServer(wendy1[1])
+            warn("Use Skill " ..wendy1[1].Name .." 1 " )
+            wait(Delay[wendy1[1].Name])
+            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("use_active_attack"):InvokeServer(wendy1[3])
+            warn("Use Skill " ..wendy1[1].Name .." 2 " )
+            wait(Delay[wendy1[1].Name])
+            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("use_active_attack"):InvokeServer(wendy1[2])
+            warn("Use Skill " ..wendy1[1].Name .." 3 " )
+            wait(Delay[wendy1[1].Name])
+            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("use_active_attack"):InvokeServer(wendy1[4])
+            warn("Use Skill " ..wendy1[1].Name .." 4 " )
+            wait(Delay[wendy1[1].Name])
         end
-    }
-)
-
+        if #erwin1 ~=4 or #wendy1 ~=4 then
+            wait(20)
+        end
+        end
+    end,
+    Enabled = false
+})
 
 game.Players.LocalPlayer.PlayerGui.MessageGui:Destroy()
