@@ -67,7 +67,7 @@ end
 
 ----------MAIN FRAME----------
 local Y = X.New({
-    Title = "Main"
+    Title = "Main Menu"
 })
 
 
@@ -115,7 +115,7 @@ Y.Toggle({
     end)
         end
     end,
-    Enabled = Settings.EnableBuffwendyLoop
+    Enabled = Settings.EnableBufferwinLoop
 })
 
 Y.Toggle({
