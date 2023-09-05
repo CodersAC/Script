@@ -72,13 +72,12 @@ local Y = X.New({
 local Z = X.New({
     Title = "Misc"
 })
-
+if Settings.EnableBufferwinLoop then 
+	Value = false
+    end
 ----------AUTO ABILITIES----------
 Y.Toggle({
     Text = "Auto Abilities Erwin",
-    if Settings.EnableBufferwinLoop then 
-	Value = false
-    end
     Callback = function(Value)
 	pcall(function()
 	print(Settings.EnableBufferwinLoop)
