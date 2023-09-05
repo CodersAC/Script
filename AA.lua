@@ -111,7 +111,7 @@ Y.Toggle({
     end)
         end
     end,
-    Enabled = Settings.EnableBufferwinLoop
+    Enabled = false
 })
 Y.Toggle({
     Text = "Auto Abilities Wendy",
@@ -154,7 +154,7 @@ Y.Toggle({
     end)
         end
     end,
-    Enabled = Settings.EnableBuffwendyLoop
+    Enabled = false
 })
 ----------REFRESH SCRIPT----------
 Y.Button(
