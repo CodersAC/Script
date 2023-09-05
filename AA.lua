@@ -172,7 +172,7 @@ Y.Button(
 )
 Y.Button(
     {
-        Text = Text = "EnableBufferwinLoop" .. Settings.nableBufferwinLoop,
+        Text = "EnableBufferwinLoop" .. Settings.nableBufferwinLoop,
         Callback = function()
         end
     }
