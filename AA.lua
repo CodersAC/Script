@@ -75,11 +75,11 @@ local Y = X.New({
 Y.Toggle({
     Text = "Auto Abilities Erwin",
     Callback = function(Value)
-	    print(Settings.EnableBufferwinLoop)
+	pcall(function()
+	print(Settings.EnableBufferwinLoop)
         Settings.EnableBufferwinLoop = Value
         saveSettings()
-        autoabilityerwin()
-        end
+        autoabilityerwin()end)
     end,
     Enabled = Settings.EnableBufferwinLoop
 })
@@ -87,11 +87,11 @@ Y.Toggle({
 Y.Toggle({
     Text = "Auto Abilities Wendy",
     Callback = function(Value)
-	    print(Settings.EnableBuffwendyLoop)
+	pcall(function()
+	print(Settings.EnableBuffwendyLoop)
         Settings.EnableBuffwendyLoop = Value
         saveSettings()
-        autoabilitywendy()
-        end
+        autoabilitywendy()end)
     end,
     Enabled = Settings.EnableBuffwendyLoop
 })
