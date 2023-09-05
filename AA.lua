@@ -158,6 +158,9 @@ function autoabilityerwin()
             warn("Use Skill " ..erwin1[1].Name .." 4 " )
             wait(Delay[erwin1[1].Name])
           end
+	  if not Settings.EnableBufferwinLoop then 
+          	break
+	  end
         end
     end
 end
@@ -200,6 +203,9 @@ function autoabilitywendy()
                 warn("Use Skill " ..wendy1[1].Name .." 4 " )
                 wait(Delay[wendy1[1].Name])
             end
+	    if not Settings.EnableBuffwendyLoop then 
+             break
+	  end
         end
     end
 end
