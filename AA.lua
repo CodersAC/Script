@@ -123,6 +123,7 @@ Z.Button(
     }
 )
 function autoabilityerwin()
+	if Settings.EnableBufferwinLoop then
         local LocalPlayer = game.Players.LocalPlayer
         local LPlayer = game.Players.LocalPlayer.Name
         local UnitsE = {'erwin','erwin:shiny','erwin_school','erwin_halloween'}
@@ -132,7 +133,7 @@ function autoabilityerwin()
             ['erwin_school'] = 15.5,
             ['erwin_halloween'] = 15.5,
         }
-        while Settings.EnableBufferwinLoop do
+        while wait() do
           local erwin1 = {}
           for _,v in pairs(game:GetService("Workspace")._UNITS:GetChildren()) do
               if table.find(UnitsE,v.Name) and v:FindFirstChild("_stats"):FindFirstChild("player").Value == LocalPlayer then
@@ -158,6 +159,7 @@ function autoabilityerwin()
             wait(Delay[erwin1[1].Name])
           end
         end
+    end
 end
 
 if Settings.EnableBufferwinLoop then
@@ -165,6 +167,7 @@ if Settings.EnableBufferwinLoop then
 end
 
 function autoabilitywendy()
+	if Settings.EnableBuffwendyLoop then
         local LocalPlayer = game.Players.LocalPlayer
         local LPlayer = game.Players.LocalPlayer.Name
         local UnitsW = {'wendy','wendy:shiny'}
@@ -172,7 +175,7 @@ function autoabilitywendy()
             ['wendy'] = 16.4,
             ['wendy:shiny'] = 16.4,
         }
-        while Settings.EnableBuffwendyLoop do
+        while wait() do
             local wendy1 = {}
             for _,v in pairs(game:GetService("Workspace")._UNITS:GetChildren()) do
                 if table.find(UnitsW,v.Name) and v:FindFirstChild("_stats"):FindFirstChild("player").Value == LocalPlayer then
@@ -198,6 +201,7 @@ function autoabilitywendy()
                 wait(Delay[wendy1[1].Name])
             end
         end
+    end
 end
 
 if Settings.EnableBuffwendyLoop then
