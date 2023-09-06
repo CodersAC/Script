@@ -72,7 +72,7 @@ local Y = X.New({
 local Z = X.New({
     Title = "Misc"
 })
-
+X.ChangeToggleKey(Enum.KeyCode.L)
 ----------AUTO ABILITIES----------
 Y.Toggle({
     Text = "Auto Abilities Erwin",
