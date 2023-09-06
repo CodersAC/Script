@@ -132,7 +132,7 @@ function autoabilityerwin()
             ['erwin_school'] = 15.6,
             ['erwin_halloween'] = 15.6,
         }
-        while wait() do
+        while Settings.EnableBufferwinLoop do
           local erwin1 = {}
           for _,v in pairs(game:GetService("Workspace")._UNITS:GetChildren()) do
               if table.find(UnitsE,v.Name) and v:FindFirstChild("_stats"):FindFirstChild("player").Value == LocalPlayer then
@@ -177,7 +177,7 @@ function autoabilitywendy()
             ['wendy'] = 15.6,
             ['wendy:shiny'] = 15.6,
         }
-        while wait() do
+        while Settings.EnableBuffwendyLoop do
             local wendy1 = {}
             for _,v in pairs(game:GetService("Workspace")._UNITS:GetChildren()) do
                 if table.find(UnitsW,v.Name) and v:FindFirstChild("_stats"):FindFirstChild("player").Value == LocalPlayer then
