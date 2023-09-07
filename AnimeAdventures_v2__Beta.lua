@@ -1,5 +1,5 @@
 --updatefix
-local version = "CARLO VERSION!!"
+local version = "16.0.0-1x"
 
 ---// Loading Section \\---
 repeat  task.wait() until game:IsLoaded()
@@ -3755,11 +3755,11 @@ function autoload()
     pcall(function()
         local exec = tostring(identifyexecutor())
         if exec == "Synapse X" and Settings.AutoLoadScript then
-            syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/CodersAC/Script/main/AnimeAdventures_v2__Beta.lua'))()")
+            syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/ArponAG/Scripts/main/AnimeAdventures_v2__Beta.lua'))()")
         elseif exec ~= "Synapse X" and Settings.AutoLoadScript then
-            queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/CodersAC/Script/main/AnimeAdventures_v2__Beta.lua'))()")
+            queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/ArponAG/Scripts/main/AnimeAdventures_v2__Beta.lua'))()")
         elseif exec ~= "Synapse X" and Settings.AutoLoadScript then
-            loadstring(game:HttpGet('https://raw.githubusercontent.com/CodersAC/Script/main/AnimeAdventures_v2__Beta.lua'))()
+            syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/ArponAG/Scripts/main/AnimeAdventures_v2__Beta.lua'))()")
         end
     end)
 end
@@ -3769,7 +3769,7 @@ if Settings.AutoLoadScript then
 end
 
 function autoload2()
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/CodersAC/Script/main/AnimeAdventures_v2__Beta.lua'))()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/ArponAG/Scripts/main/AnimeAdventures_v2__Beta.lua'))()
 end
 
 if Settings.refarmc then
@@ -4738,10 +4738,10 @@ function autoabilityerwin()
         local LPlayer = game.Players.LocalPlayer.Name
         local UnitsE = {'erwin','erwin:shiny','erwin_school','erwin_halloween'}
         local Delay = {
-            ['erwin'] = 15.5,
-            ['erwin:shiny'] = 15.5,
-            ['erwin_school'] = 15.5,
-            ['erwin_halloween'] = 15.5,
+            ['erwin'] = 16.4,
+            ['erwin:shiny'] = 16.4,
+            ['erwin_school'] = 16.4,
+            ['erwin_halloween'] = 16.4,
         }
         _G.Stop = false
         while wait() do
@@ -5763,7 +5763,7 @@ function PlaceUnitsTEST(map,name,_uuid,unit)
     --//Unit 4
     local U4_amm, U4_name, U4_uuid, U4_u = GetUnitInfo("U4")
     if U4_wv <= current_wave and U4_amm <= U4_TAmm then
-	if U4_sellW >= current_wave and U4_amm < U4_TAmm then
+	    if U4_sellW >= current_wave and U4_amm < U4_TAmm then
 		    print("placing u4.."..U4_name)
 		    PlacePos(map, U4_name, U4_uuid,"UP4")
         end
@@ -5782,7 +5782,6 @@ function PlaceUnitsTEST(map,name,_uuid,unit)
             upgradeunit4(U4_name)
             print("upgrading check u4.."..U4_name)
         end
-	print("THE AMOUNT OF UNIT 4 IS "..U4_amm)
     end
 --end
     --//Unit 5
